@@ -1,7 +1,7 @@
-// Aguarda o DOM ser completamente carregado antes de executar o script
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- SELEÇÃO DOS ELEMENTOS DO DOM ---
+    // -SELEÇÃO DOS ELEMENTOS DO DOM-
+    
     // Telas
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
@@ -21,11 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalMessageElement = document.getElementById('final-message');
     const playerNameInput = document.getElementById('player-name-input');
     
-    // Elementos do Ranking (Bônus)
+    // Elementos do Ranking
     const rankingList = document.getElementById('ranking-list');
 
     // --- CONFIGURAÇÕES E VARIÁVEIS DO JOGO ---
-    // Definição das cores que serão usadas no jogo
     const COLORS = {
         'vermelho': '#e74c3c',
         'verde': '#2ecc71',
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'amarelo': '#f1c40f',
         'laranja': '#e67e22',
         'roxo': '#9b59b6',
-        // --- Novas cores adicionadas ---
         'ciano': '#1abc9c',
         'rosa': '#ff79c6',
         'cinza': '#95a5a6',
@@ -41,16 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const COLOR_NAMES = Object.keys(COLORS); // Extrai os nomes das cores
     const GRID_SIZE = 9; // 3x3 grid
-    const INITIAL_TIME = 15; // Tempo inicial em segundos
+    const INITIAL_TIME = 10; // Tempo inicial em segundos
 
-    // Variáveis de estado do jogo
+    // Estado do jogo
     let score = 0;
     let timeLeft = 0;
     let timerInterval = null;
     let currentCorrectColorName = '';
     let playerName = '';
 
-    // --- FUNÇÕES DO JOGO ---
+    // -FUNÇÕES DO JOGO-
 
     /**
      * Inicia o jogo: reseta o estado, esconde a tela inicial e mostra a tela do jogo.
@@ -72,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Inicia o contador de tempo regressivo.
+     * Inicia o contador de tempo.
      */
     function startTimer() {
         if (timerInterval) clearInterval(timerInterval);
@@ -153,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameOverScreen.classList.add('active');
     }
 
-    // --- FUNÇÕES AUXILIARES ---
+    // -FUNÇÕES AUXILIARES-
 
     function updateScoreDisplay() {
         scoreElement.textContent = score;
@@ -193,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `rgb(${+r}, ${+g}, ${+b})`;
     }
     
-    // --- BÔNUS: FUNÇÕES DE RANKING ---
+    // -BÔNUS: RANKING-
 
     /**
      * Atualiza o ranking com o novo resultado e o salva no localStorage.
@@ -227,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- EVENT LISTENERS ---
+    // -EVENT LISTENERS-
     startButton.addEventListener('click', startGame);
     playAgainButton.addEventListener('click', startGame);
 });
