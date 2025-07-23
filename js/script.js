@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // -SELEÇÃO DOS ELEMENTOS DO DOM-
+// -SELEÇÃO DOS ELEMENTOS DO DOM-
     
-    // Telas
+// Telas
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
     const gameOverScreen = document.getElementById('game-over-screen');
 
-    // Botões
+// Botões
     const startButton = document.getElementById('start-button');
     const playAgainButton = document.getElementById('play-again-button');
 
-    // Elementos de exibição
+// Elementos de exibição
     const scoreElement = document.getElementById('score');
     const timerElement = document.getElementById('timer');
     const instructionText = document.getElementById('instruction-text');
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalMessageElement = document.getElementById('final-message');
     const playerNameInput = document.getElementById('player-name-input');
     
-    // Elementos do Ranking
+// Elementos do Ranking
     const rankingList = document.getElementById('ranking-list');
 
-    // --- CONFIGURAÇÕES E VARIÁVEIS DO JOGO ---
+// -CONFIGURAÇÕES E VARIÁVEIS DO JOGO-
     const COLORS = {
         'vermelho': '#e74c3c',
         'verde': '#2ecc71',
@@ -41,14 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const GRID_SIZE = 9; // 3x3 grid
     const INITIAL_TIME = 10; // Tempo inicial em segundos
 
-    // Estado do jogo
+// Estado do jogo
     let score = 0;
     let timeLeft = 0;
     let timerInterval = null;
     let currentCorrectColorName = '';
     let playerName = '';
 
-    // -FUNÇÕES DO JOGO-
+// -FUNÇÕES DO JOGO-
 
     /**
      * Inicia o jogo: reseta o estado, esconde a tela inicial e mostra a tela do jogo.
@@ -69,9 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
         startTimer();
     }
 
-    /**
-     * Inicia o contador de tempo.
-     */
+    
+// Inicia o contador de tempo.
+     
     function startTimer() {
         if (timerInterval) clearInterval(timerInterval);
 
@@ -84,9 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    /**
-     * Gera uma nova rodada: limpa o grid, escolhe uma nova cor e preenche o grid.
-     */
+    
+// Gera uma nova rodada: limpa o grid, escolhe uma nova cor e preenche o grid.
+     
     function generateNewRound() {
         colorGrid.innerHTML = '';
         feedbackText.textContent = '';
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     /**
-     * Finaliza o jogo: para o timer e mostra a tela de fim de jogo.
+     * Finaliza o jogo.
      */
     function endGame() {
         clearInterval(timerInterval);
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameOverScreen.classList.add('active');
     }
 
-    // -FUNÇÕES AUXILIARES-
+// -FUNÇÕES AUXILIARES-
 
     function updateScoreDisplay() {
         scoreElement.textContent = score;
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `rgb(${+r}, ${+g}, ${+b})`;
     }
     
-    // -BÔNUS: RANKING-
+// -BÔNUS: RANKING-
 
     /**
      * Atualiza o ranking com o novo resultado e o salva no localStorage.
@@ -207,9 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
         displayRanking();
     }
     
-    /**
-     * Exibe o ranking na tela de fim de jogo.
-     */
+    
+// Exibe o ranking na tela de fim de jogo.
+     
     function displayRanking() {
         const ranking = JSON.parse(localStorage.getItem('colorChallengeRanking')) || [];
         rankingList.innerHTML = '';
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // -EVENT LISTENERS-
+// -EVENT LISTENERS-
     startButton.addEventListener('click', startGame);
     playAgainButton.addEventListener('click', startGame);
 });
